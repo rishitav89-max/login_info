@@ -1,0 +1,287 @@
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+    <script>
+        var name, p, unm, fn, e, pn, ad, t1, t2, t3, t4;
+        //Personal info page
+        function fp() {
+            name = document.getElementById("name").value
+            p = document.getElementById("ps").value
+
+            var s = `
+                <hr><center><h2>Personal Info Page</h2></center><hr>
+                <br>
+                Enter Name
+                <input type="text" class="form-control" name="unm" id="unm" onblur="valid6()">
+                <div class="row" id="unn" style="color: rgb(239, 97, 97);"></div>
+                <br>
+                Enter Email
+                <input type="email" class="form-control" name="e" id="e" onblur="valid3()">
+                <div class="row" id="em" style="color: rgb(239, 97, 97);"></div>
+                <br>
+                Enter Phone no.
+                <input type="number" class="form-control" name="pn" id="pn" onblur="valid4()">
+                <div class="row" id="phn" style="color: rgb(239, 97, 97);"></div>
+                <br>
+                Enter Address
+                <input type="text" class="form-control" name="ad" id="ad" onblur="valid5()">
+                <div class="row" id="adr" style="color: rgb(239, 97, 97);"></div>
+                <br>
+                <div class="d-grid gap-2"><center>
+                <button type="button" value="Next" class="btn" onclick="fp1()">Next</button></center>
+                </div>
+                <br><br>
+            `
+            if (name == "" || p == "") {
+                document.getElementById("un").innerHTML = "*Enter User name"
+                document.getElementById("name").style.border = "2px solid red"
+                document.getElementById("pass").innerHTML = "*Password is Mandatory"
+                document.getElementById("ps").style.border = "2px solid red"
+                document.getElementById("phn").innerHTML = "*Enter Phone no."
+                document.getElementById("pn").style.border = "2px solid red"
+
+            }
+            else
+                document.getElementById("data").innerHTML = s
+
+        }
+
+        //Qualification info Page
+        function fp1() {
+            unm = document.getElementById("unm").value
+            e = document.getElementById("e").value
+            pn = document.getElementById("pn").value
+            ad = document.getElementById("ad").value
+
+            var s = `
+                <hr><center><h2>Qualification Info</h2></center><hr>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        Enter 10th percentage
+                        <input type="number" class="form-control" id="t1">
+                    <br>
+                    </div>
+                    <div class="col">
+                        Enter 12th percentage
+                        <input type="number" class="form-control" id="t2">
+                    <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Enter UG percentage
+                        <input type="number" class="form-control" id="t3">
+                    <br>
+                    </div>
+                    <div class="col">
+                        Enter PG percentage
+                        <input type="number" class="form-control" id="t4">
+                    <br>
+                    </div>
+                </div>
+                
+                <div class="d-grid gap-2"><center>
+                <button type="button" value="Next" class="btn btn-primary" onclick="fp2()">Next</button></center>
+                </div>
+                <br><br>
+            `
+            if (unm == "" || e == "" || pn == "" || ad == "") {
+                document.getElementById("unn").innerHTML = "*Enter User name"
+                document.getElementById("unm").style.border = "2px solid red"
+                document.getElementById("em").innerHTML = "*Email is Mandatory"
+                document.getElementById("e").style.border = "2px solid red"
+                document.getElementById("phn").innerHTML = "*Enter Phone no."
+                document.getElementById("pn").style.border = "2px solid red"
+                document.getElementById("adr").innerHTML = "*Address is Mandatory"
+                document.getElementById("ad").style.border = "2px solid red"
+
+            }
+            else
+                document.getElementById("data").innerHTML = s
+
+        }
+
+        //Table Format
+        function fp2() {
+            t1 = document.getElementById("t1").value
+            t2 = document.getElementById("t2").value
+            t3 = document.getElementById("t3").value
+            t4 = document.getElementById("t4").value
+
+
+            var s = `
+            <table class="table table-borderless table-primary">
+                <tr><td>Name</td><td>${unm}</td></tr>
+                <tr><td>Phone no.</td><td>${pn}</td></tr>
+                <tr><td>Email</td><td>${e}</td></tr>
+                <tr><td>Address</td><td>${ad}</td></tr>
+                <tr><td>10th</td><td>${t1}%</td></tr>
+                <tr><td>12th</td><td>${t2}%</td></tr>
+                <tr><td>UG</td><td>${t3}%</td></tr>
+                <tr><td>PG</td><td>${t4}%</td></tr>
+            </table>
+            `
+            if (t1 == "" || t2 == "" || t3 == ""|| t4 == ""){}
+            else
+            document.getElementById("data").innerHTML = s
+        }
+
+
+        //Validations
+
+
+        function valid1() {
+            var name = /^[A-Z][a-z]+\s+[A-Z][a-z]+$/;
+            var nam = document.getElementById("name").value
+            if (nam == "") {
+                document.getElementById("un").innerHTML = "*Enter User name"
+                document.getElementById("name").style.border = "2px solid red"
+            }
+            else {
+                if (!name.test(nam)) {
+                    document.getElementById("un").innerHTML = "*Invalid Entry"
+                    document.getElementById("name").style.border = "2px solid red"
+                }
+                else {
+                    document.getElementById("un").innerHTML = ""
+                    document.getElementById("name").style.border = "2px solid aqua"
+                }
+
+            }
+        }
+        function valid2() {
+            var password = /^[a-z 0-9 @!#$%&]+$/
+            var b = document.getElementById("ps").value
+            if (b == "") {
+                document.getElementById("pass").innerHTML = "*Password is Mandatory"
+                document.getElementById("ps").style.border = "2px solid red"
+            }
+            else {
+                if (!password.test(b)) {
+                    document.getElementById("pass").innerHTML = "*Invalid Password"
+                    document.getElementById("ps").style.border = "2px solid red"
+                }
+                else {
+                    document.getElementById("pass").innerHTML = ""
+                    document.getElementById("ps").style.border = "2px solid aqua"
+                }
+            }
+        }
+        function valid3() {
+            var email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            var c = document.getElementById("e").value
+            if (c == "") {
+                document.getElementById("em").innerHTML = "*Email is Mandatory"
+                document.getElementById("e").style.border = "2px solid red"
+            }
+            else {
+                if (!email.test(c)) {
+                    document.getElementById("em").innerHTML = "*Invalid Email"
+                    document.getElementById("e").style.border = "2px solid red"
+                }
+                else {
+                    document.getElementById("em").innerHTML = ""
+                    document.getElementById("e").style.border = "2px solid aqua"
+                }
+            }
+        }
+        function valid4() {
+            var phone = /^[6 9 8 7][0-9]{9}$/;
+            var d = document.getElementById("pn").value
+            if (d == "") {
+                document.getElementById("phn").innerHTML = "*Enter Phone no."
+                document.getElementById("pn").style.border = "2px solid red"
+            }
+            else {
+                if (!phone.test(d)) {
+                    document.getElementById("phn").innerHTML = "*Invalid number"
+                    document.getElementById("pn").style.border = "2px solid red"
+                }
+                else {
+                    document.getElementById("phn").innerHTML = ""
+                    document.getElementById("pn").style.border = "2px solid aqua"
+                }
+            }
+        }
+        function valid5() {
+            var addr = /^[a-zA-Z0-9\s,.'-]{3,}$/;
+            var e = document.getElementById("ad").value
+            if (e == "") {
+                document.getElementById("adr").innerHTML = "*Address is Mandatory"
+                document.getElementById("ad").style.border = "2px solid red"
+            }
+            else {
+                if (!addr.test(e)) {
+                    document.getElementById("adr").innerHTML = "*Invalid Address"
+                    document.getElementById("ad").style.border = "2px solid red"
+                }
+                else {
+                    document.getElementById("adr").innerHTML = ""
+                    document.getElementById("ad").style.border = "2px solid aqua"
+                }
+            }
+        }
+        function valid6() {
+            var nm = /^[A-Z][a-z]+\s+[A-Z][a-z]+$/;
+            var f = document.getElementById("unm").value
+            if (f == "") {
+                document.getElementById("unn").innerHTML = "*Enter User name"
+                document.getElementById("unm").style.border = "2px solid red"
+            }
+            else {
+                if (!nm.test(f)) {
+                    document.getElementById("unn").innerHTML = "*Invalid Entry"
+                    document.getElementById("unm").style.border = "2px solid red"
+                }
+                else {
+                    document.getElementById("unn").innerHTML = ""
+                    document.getElementById("unm").style.border = "2px solid aqua"
+                }
+
+            }
+        }
+
+
+    </script>
+</head>
+
+
+<body>
+    <!-- User Info Page -->
+    <div class="container" style="padding: 20px; margin-top: 20px;">
+        <div class="row">
+            <div class="col-md-3 col-12"></div>
+            <div class="col-md-6 col-12 shadow-lg "
+                style="font-size: 15px; box-shadow: 5px rgb(4, 233, 233); border-radius: 25px; background: transparent; padding: 20px;"
+                id="data">
+                <hr>
+                <center>
+                    <h2>User Info Page</h2>
+                </center>
+                <hr>
+                <br>
+                Enter Usename
+                <input type="text" class="form-control" name="name" id="name" onblur="valid1()">
+                <div class="row" id="un" style="color: rgb(241, 82, 82);"></div>
+                <br>
+                Enter Password
+                <input type="password" class="form-control" name="ps" id="ps" onblur="valid2()">
+                <div class="row" id="pass" style="color: rgb(239, 97, 97);"></div>
+                <br>
+                <div class="d-grid gap-2"><center>
+                    <button type="button" value="Next" class="btn " onclick="fp()">Next</button></center>
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
